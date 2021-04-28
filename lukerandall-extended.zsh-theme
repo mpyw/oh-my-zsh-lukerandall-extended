@@ -7,7 +7,7 @@ function my_git_prompt_info() {
     GIT_STATUS=$(git_prompt_status)
     [[ -n $GIT_STATUS ]] && GIT_STATUS=" $GIT_STATUS"
     echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$GIT_STATUS$ZSH_THEME_GIT_PROMPT_SUFFIX"
-  elif refs=$(git for-each-ref --format '%(refname:short)' --points-at HEAD 'refs/remotes/**' | grep -v HEAD); then
+  elif refs=$(git for-each-ref --format '%(refname:short)' --points-at HEAD 'refs/remotes/**' | grep -vx origin/HEAD); then
     ref=$(printf %s "$refs" | tr '\n' ', ')
     GIT_STATUS=$(git_prompt_status)
     [[ -n $GIT_STATUS ]] && GIT_STATUS=" $GIT_STATUS"
