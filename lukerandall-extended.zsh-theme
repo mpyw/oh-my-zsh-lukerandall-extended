@@ -10,7 +10,7 @@ function my_git_prompt_info() {
   elif ref=$(git for-each-ref --format '%(refname:short)' --points-at HEAD 'refs/remotes/**' | grep -v HEAD); then
     GIT_STATUS=$(git_prompt_status)
     [[ -n $GIT_STATUS ]] && GIT_STATUS=" $GIT_STATUS"
-    echo "$ZSH_THEME_GIT_PROMPT_PREFIX_DETACHED${ref#refs/heads/}$GIT_STATUS$ZSH_THEME_GIT_PROMPT_SUFFIX_DETACHED"  
+    echo "$ZSH_THEME_GIT_PROMPT_PREFIX_DETACHED$ref$GIT_STATUS$ZSH_THEME_GIT_PROMPT_SUFFIX_DETACHED"  
   fi
 }
 
